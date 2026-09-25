@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Aduan Masyarakat - Desa Serunai</title>
+
+  <!-- FAVICON -->
+  <link rel="icon"
+        type="image/jpeg"
+        href="favicon.jpg">
+
+  <link rel="shortcut icon"
+        type="image/jpeg"
+        href="favicon.jpg">
+
+
+  <style>
+
+    /* ==========================================
+       BAGIAN ADUAN
+       ========================================== */
+
+    .aduan-section {
+      padding: 60px 20px;
+      background: #eaf6ff;
+      min-height: 100vh;
+    }
+
+
+    .aduan-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+
+      box-shadow:
+        0 5px 20px rgba(77, 171, 247, 0.15);
+    }
+
+
+    /* ==========================================
+       HEADER
+       ========================================== */
+
+    .aduan-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+
+    .aduan-header h2 {
+      color: #1971c2;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+
+    .aduan-header p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+
+    /* ==========================================
+       FORM
+       ========================================== */
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #343a40;
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+      width: 100%;
+
+      padding: 13px 15px;
+
+      border: 1px solid #b6d9f2;
+
+      border-radius: 8px;
+
+      font-size: 15px;
+
+      outline: none;
+
+      transition: 0.3s;
+
+      box-sizing: border-box;
+    }
+
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+
+      border-color: #4dabf7;
+
+      box-shadow:
+        0 0 0 3px rgba(77, 171, 247, 0.15);
+    }
+
+
+    .form-group textarea {
+
+      min-height: 150px;
+
+      resize: vertical;
+    }
+
+
+    /* ==========================================
+       TOMBOL
+       ========================================== */
+
+    #btnKirim {
+
+      width: 100%;
+
+      padding: 14px;
+
+      background: #4dabf7;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 8px;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+
+    #btnKirim:hover {
+
+      background: #339af0;
+    }
+
+
+    #btnKirim:disabled {
+
+      background: #a5d8ff;
+
+      cursor: not-allowed;
+    }
+
+
+    /* ==========================================
+       HASIL
+       ========================================== */
+
+    #hasilAduan {
+
+      margin-top: 20px;
+    }
+
+
+    .berhasil {
+
+      padding: 18px;
+
+      background: #d3f9d8;
+
+      color: #2b8a3e;
+
+      border-radius: 8px;
+
+      line-height: 1.6;
+    }
+
+
+    .gagal {
+
+      padding: 18px;
+
+      background: #ffe3e3;
+
+      color: #c92a2a;
+
+      border-radius: 8px;
+
+      line-height: 1.6;
+    }
+
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+
+    @media (max-width: 600px) {
+
+      .aduan-section {
+
+        padding: 30px 15px;
+      }
+
+
+      .aduan-container {
+
+        padding: 25px 20px;
+      }
+
+
+      .aduan-header h2 {
+
+        font-size: 25px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ==========================================
+       ADUAN MASYARAKAT DESA SERUNAI
+       ========================================== -->
+
+  <section class="aduan-section">
+
+    <div class="aduan-container">
+
+
+      <!-- HEADER -->
+
+      <div class="aduan-header">
+
+        <h2>
+          📝 Aduan Masyarakat
+        </h2>
+
+        <p>
+          Sampaikan keluhan, laporan, atau aspirasi
+          Anda kepada Pemerintah Desa Serunai.
+        </p>
+
+      </div>
+
+
+      <!-- FORM ADUAN -->
+
+      <form id="formAduan">
+
+
+        <!-- NAMA -->
+
+        <div class="form-group">
+
+          <label for="nama">
+            Nama Pelapor
+          </label>
+
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama Anda"
+            required
+          >
+
+        </div>
+
+
+        <!-- KATEGORI -->
+
+        <div class="form-group">
+
+          <label for="kategori">
+            Kategori Aduan
+          </label>
+
+          <select
+            id="kategori"
+            required
+          >
+
+            <option value="">
+              -- Pilih Kategori --
+            </option>
+
+            <option value="Infrastruktur">
+              Infrastruktur
+            </option>
+
+            <option value="Pelayanan Desa">
+              Pelayanan Desa
+            </option>
+
+            <option value="Kebersihan">
+              Kebersihan
+            </option>
+
+            <option value="Keamanan">
+              Keamanan
+            </option>
+
+            <option value="Bantuan Sosial">
+              Bantuan Sosial
+            </option>
+
+            <option value="Lainnya">
+              Lainnya
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- JUDUL -->
+
+        <div class="form-group">
+
+          <label for="judul">
+            Judul Aduan
+          </label>
+
+          <input
+            type="text"
+            id="judul"
+            placeholder="Contoh: Jalan Desa Rusak"
+            required
+          >
+
+        </div>
+
+
+        <!-- ISI -->
+
+        <div class="form-group">
+
+          <label for="isi">
+            Isi Aduan
+          </label>
+
+          <textarea
+            id="isi"
+            placeholder="Tuliskan keluhan atau laporan Anda..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- TOMBOL -->
+
+        <button
+          type="submit"
+          id="btnKirim"
+        >
+          📤 Kirim Aduan
+        </button>
+
+
+      </form>
+
+
+      <!-- HASIL -->
+
+      <div id="hasilAduan"></div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+
+  <script>
+
+
+    // ==========================================
+    // URL GOOGLE APPS SCRIPT
+    // ==========================================
+
+    const URL_SCRIPT =
+      "https://script.google.com/macros/s/AKfycbyC9Zb2LLDNiuRFQly2cYOfBQUuapv3_4bIygGKFYwK5VaRYfj2nJwn_UcS7KsPWBTa/exec";
+
+    // ==========================================
+    // TOKEN
+    // HARUS SAMA DENGAN TOKEN DI CODE.GS
+    // ==========================================
+
+    const TOKEN =
+      "SERUNAI2026";
+
+
+    // ==========================================
+    // MENGAMBIL ELEMENT
+    // ==========================================
+
+    const formAduan =
+      document.getElementById("formAduan");
+
+    const btnKirim =
+      document.getElementById("btnKirim");
+
+    const hasilAduan =
+      document.getElementById("hasilAduan");
+
+
+    // ==========================================
+    // KETIKA FORM DIKIRIM
+    // ==========================================
+
+    formAduan.addEventListener(
+      "submit",
+      async function(event) {
+
+
+        // Mencegah halaman reload
+
+        event.preventDefault();
+
+
+        // ========================================
+        // MENGAMBIL DATA
+        // ========================================
+
+        const nama =
+          document
+            .getElementById("nama")
+            .value
+            .trim();
+
+
+        const kategori =
+          document
+            .getElementById("kategori")
+            .value;
+
+
+        const judul =
+          document
+            .getElementById("judul")
+            .value
+            .trim();
+
+
+        const isi =
+          document
+            .getElementById("isi")
+            .value
+            .trim();
+
+
+        // ========================================
+        // VALIDASI
+        // ========================================
+
+        if (
+          nama === "" ||
+          kategori === "" ||
+          judul === "" ||
+          isi === ""
+        ) {
+
+          alert(
+            "Mohon lengkapi semua data aduan."
+          );
+
+          return;
+        }
+
+
+        // ========================================
+        // DISABLE TOMBOL
+        // ========================================
+
+        btnKirim.disabled = true;
+
+        btnKirim.innerHTML =
+          "⏳ Mengirim Aduan...";
+
+
+        // ========================================
+        // DATA YANG DIKIRIM
+        // ========================================
+
+        const data = {
+
+          token: TOKEN,
+
+          nama: nama,
+
+          kategori: kategori,
+
+          judul: judul,
+
+          isi: isi
+
+        };
+
+
+        // ========================================
+        // KIRIM DATA
+        // ========================================
+
+        try {
+
+
+          const response =
+            await fetch(
+              URL_SCRIPT,
+              {
+
+                method: "POST",
+
+                body:
+                  JSON.stringify(data)
+
+              }
+            );
+
+
+          // ======================================
+          // MEMBACA RESPONSE
+          // ======================================
+
+          const hasil =
+            await response.json();
+
+
+          // ======================================
+          // BERHASIL
+          // ======================================
+
+          if (hasil.success) {
+
+
+            hasilAduan.innerHTML = `
+
+              <div class="berhasil">
+
+                <strong>
+                  ✅ Aduan berhasil dikirim!
+                </strong>
+
+                <br><br>
+
+                Nomor Aduan Anda:
+
+                <strong>
+                  ${hasil.id}
+                </strong>
+
+                <br><br>
+
+                Silakan simpan nomor aduan
+                tersebut untuk keperluan pengecekan.
+
+              </div>
+
+            `;
+
+
+            // Kosongkan form
+
+            formAduan.reset();
+
+
+          }
+
+
+          // ======================================
+          // GAGAL
+          // ======================================
+
+          else {
+
+
+            hasilAduan.innerHTML = `
+
+              <div class="gagal">
+
+                ❌ Aduan gagal dikirim.
+
+                <br><br>
+
+                Pesan:
+
+                ${hasil.message}
+
+              </div>
+
+            `;
+
+          }
+
+
+        }
+
+
+        // ========================================
+        // ERROR
+        // ========================================
+
+        catch (error) {
+
+
+          console.error(error);
+
+
+          hasilAduan.innerHTML = `
+
+            <div class="gagal">
+
+              ❌ Terjadi kesalahan saat
+              mengirim aduan.
+
+              <br><br>
+
+              Pastikan URL Google Apps Script
+              sudah benar dan sudah di-deploy
+              sebagai Web App.
+
+            </div>
+
+          `;
+
+        }
+
+
+        // ========================================
+        // AKTIFKAN KEMBALI TOMBOL
+        // ========================================
+
+        btnKirim.disabled = false;
+
+        btnKirim.innerHTML =
+          "📤 Kirim Aduan";
+
+
+      }
+
+    );
+
+  </script>
+
+
+</body>
+
+</html>
